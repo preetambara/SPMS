@@ -1,16 +1,30 @@
-import { createContext, useContext, useState } from "react";
-import { ADMIN } from "../data/mockData";
+/* eslint-disable react-refresh/only-export-components */
+import { createContext, useContext, useState, useEffect } from "react";
+import { noticeService } from "../services/noticeService";
 
 const NoticesContext = createContext(null);
 
 export function NoticesProvider({ children }) {
-  const [notices, setNotices] = useState(ADMIN.notices);
+  const [notices, setNotices] = useState([]);
 
-  const addNotice = (n) =>
-    setNotices((l) => [{ ...n, date: "Just now" }, ...l]);
+  useEffect(() => {
+    noticeService.getNotices().then((data) => {
+      if (Array.isArray(data)) setNotices(data);
+    });
+  }, []);
 
-  const removeNotice = (i) =>
-    setNotices((l) => l.filter((_, x) => x !== i));
+  const addNotice = async (n) => {
+    const created = await noticeService.createNotice({ ...n, date: "Just now" });
+    setNotices((prev) => [created, ...prev]);
+  };
+
+  const removeNotice = async (i) => {
+    const target = notices[i];
+    if (target && target.id) {
+      await noticeService.deleteNotice(target.id);
+    }
+    setNotices((prev) => prev.filter((_, idx) => idx !== i));
+  };
 
   return (
     <NoticesContext.Provider value={{ notices, addNotice, removeNotice }}>
@@ -20,3 +34,4 @@ export function NoticesProvider({ children }) {
 }
 
 export const useNotices = () => useContext(NoticesContext);
+export default NoticesContext;

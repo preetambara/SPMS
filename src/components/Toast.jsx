@@ -1,9 +1,9 @@
+/* eslint-disable react-refresh/only-export-components */
 import { useEffect, useState } from "react";
 import Icon from "./Icon";
+import { showToast } from "../utils/toast";
 
-export function showToast(message, type = "success") {
-  window.dispatchEvent(new CustomEvent("spms-toast", { detail: { message, type } }));
-}
+export { showToast };
 
 export function ToastHost() {
   const [toasts, setToasts] = useState([]);
@@ -27,3 +27,5 @@ export function ToastHost() {
     </div>
   );
 }
+
+export default ToastHost;

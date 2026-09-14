@@ -62,15 +62,22 @@ export default function Login() {
 
   const pickRole = (r) => { setRole(r); setId(DEMO[r][0]); setPw(DEMO[r][1]); setError(""); };
 
-  const submit = (e) => {
+  const submit = async (e) => {
     e.preventDefault();
-    setLoading(true); setError("");
-    setTimeout(() => {
-      const res = login(role, id, pw);
+    setLoading(true);
+    setError("");
+    try {
+      const res = await login(role, id, pw);
+      if (res.ok) {
+        nav(`/${role}/dashboard`);
+      } else {
+        setError(res.error);
+      }
+    } catch {
+      setError("An unexpected error occurred during login.");
+    } finally {
       setLoading(false);
-      if (res.ok) nav(`/${role}/dashboard`);
-      else setError(res.error);
-    }, 450);
+    }
   };
 
   const idLabel = role === "student" ? "Roll No / Email" : role === "faculty" ? "Faculty ID / Email" : "Admin ID / Email";

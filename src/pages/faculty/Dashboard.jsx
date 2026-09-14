@@ -1,18 +1,18 @@
 import { useNavigate } from "react-router-dom";
 import Icon from "../../components/Icon";
-import { PageHeader, StatCard, Badge, Avatar } from "../../components/UI";
-import { LineChart, Donut } from "../../components/Charts";
+import { PageHeader, StatCard, Badge } from "../../components/UI";
+import { Donut } from "../../components/Charts";
 import { showToast } from "../../components/Toast";
 import { useAuth } from "../../context/AuthContext";
-import { FACULTY_CLASSES, FACULTY_SUBJECTS, FACULTY_ACTIVITY, FACULTY_DEADLINES, NOTICES, CLASS_PERF } from "../../data/mockData";
-import { useNotices } from "../../context/NoticesContext";
+import { useNotices } from "../../hooks/useNotices";
+import { FACULTY_CLASSES, FACULTY_SUBJECTS, FACULTY_ACTIVITY, FACULTY_DEADLINES, CLASS_PERF } from "../../data/mockData";
 
 export default function Dashboard() {
   const { user } = useAuth();
+  const { notices } = useNotices();
   const nav = useNavigate();
   const h = new Date().getHours();
   const greet = h < 12 ? "Good Morning" : h < 17 ? "Good Afternoon" : "Good Evening";
-  const { notices } = useNotices();
 
   const quick = [
     { icon: "plus", label: "Add Assignment", go: () => nav("/faculty/assignments") },
@@ -138,7 +138,7 @@ export default function Dashboard() {
         </div>
         <div className="card card-pad">
           <div className="spread mb"><div className="card-title">Announcements</div><Icon name="bell" size={16} color="var(--muted)" /></div>
-          {NOTICES.map((n) => (
+          {(notices || []).slice(0, 4).map((n) => (
             <div className="notice-item" key={n.title}>
               <strong style={{ fontSize: 13.5 }}>{n.title}</strong>
               <p className="muted" style={{ fontSize: 12.5, marginTop: 3 }}>{n.date}</p>

@@ -1,4 +1,8 @@
+import { useId } from "react";
+
 export function LineChart({ data, labels, height = 200, color = "#2F7DF4" }) {
+  const generatedId = useId();
+  const gid = "g" + generatedId.replace(/:/g, "");
   const w = 600, pl = 34, pr = 12, pt = 14, pb = 28;
   const h = height;
   const max = Math.max(...data) * 1.12 || 1;
@@ -7,7 +11,6 @@ export function LineChart({ data, labels, height = 200, color = "#2F7DF4" }) {
   const py = (v) => pt + ih - (v / max) * ih;
   const pts = data.map((v, i) => `${px(i)},${py(v)}`).join(" ");
   const area = `${pl},${pt + ih} ${pts} ${px(data.length - 1)},${pt + ih}`;
-  const gid = "g" + Math.random().toString(36).slice(2, 8);
   return (
     <svg viewBox={`0 0 ${w} ${h}`} style={{ width: "100%", height: "auto", display: "block" }}>
       <defs>

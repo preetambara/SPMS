@@ -60,7 +60,7 @@ export default function NoticeBoard() {
         <StatCard icon="bell" tint="blue" label="Total Notices" value={visible.length} trend="Active board" />
         <StatCard icon="users" tint="purple" label="For Students" value={countFor("student")} trend="Student audience" />
         <StatCard icon="user" tint="amber" label="For Faculty" value={countFor("faculty")} trend="Faculty audience" />
-        <StatCard icon="clock" tint="green" label="Latest Posted" value={visible[0]?.date ?? "—"} trend={visible[0]?.title?.slice(0, 28) + "…" ?? ""} />
+        <StatCard icon="clock" tint="green" label="Latest Posted" value={visible[0]?.date ?? "—"} trend={visible[0]?.title ? `${visible[0].title.slice(0, 28)}…` : ""} />
       </div>
 
       {/* Admin-only compose */}

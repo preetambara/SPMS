@@ -1,7 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import Icon from "../../components/Icon";
 import { PageHeader, Badge } from "../../components/UI";
-import { showToast } from "../../components/Toast";
 import { FACULTY_SUBJECTS } from "../../data/mockData";
 
 export default function MySubjects() {
