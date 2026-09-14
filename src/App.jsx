@@ -1,4 +1,4 @@
-import { BrowserRouter } from "react-router-dom";
+import { HashRouter } from "react-router-dom";
 import { AuthProvider } from "./context/AuthContext";
 import { NoticesProvider } from "./context/NoticesContext";
 import { ToastHost } from "./components/Toast";
@@ -8,10 +8,10 @@ export default function App() {
   return (
     <AuthProvider>
       <NoticesProvider>
-        <BrowserRouter>
+        <HashRouter>
           <AppRoutes />
           <ToastHost />
-        </BrowserRouter>
+        </HashRouter>
       </NoticesProvider>
     </AuthProvider>
   );
