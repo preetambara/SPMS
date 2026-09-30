@@ -211,17 +211,6 @@ npm -v
 
 ---
 
-### Available Scripts
-
-| Script | Command | Description |
-|---|---|---|
-| **Development** | `npm run dev` | Starts the Vite development server with HMR. |
-| **Production Build** | `npm run build` | Compiles and optimizes code into `/dist`. |
-| **Preview Build** | `npm run preview` | Locally serves the production build for testing. |
-| **Lint Check** | `npm run lint` | Runs ESLint to verify clean syntax and standards. |
-
----
-
 ## 🔮 Future Enhancements
 
 - [ ] Complete Node.js + Express + MongoDB backend with JWT token generation and bcrypt password hashing.
