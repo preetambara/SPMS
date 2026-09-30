@@ -222,22 +222,6 @@ npm -v
 
 ---
 
-## 🔌 Backend API Integration (MERN)
-
-The frontend is fully prepared for an Express + MongoDB backend:
-
-1. In `.env`, set your backend API base URL:
-   ```env
-   VITE_API_URL=http://localhost:5000/api
-   ```
-2. The [`apiClient.js`](file:///c:/Users/ramch/Downloads/SPMS/SPMS/src/services/apiClient.js) automatically:
-   - Prepends the base URL to all requests.
-   - Automatically injects `Authorization: Bearer <token>` from localStorage.
-   - Formats headers as `Content-Type: application/json`.
-3. **Graceful Offline Fallback**: If the backend server is not running, the services automatically fall back to the built-in mock dataset (`src/data/mockData.js`), allowing full offline demonstration without crashes.
-
----
-
 ## 🔮 Future Enhancements
 
 - [ ] Complete Node.js + Express + MongoDB backend with JWT token generation and bcrypt password hashing.
