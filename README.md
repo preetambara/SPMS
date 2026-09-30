@@ -40,7 +40,7 @@ Built with a modular, **MERN-ready client architecture**, SPMS provides dedicate
 - **Attendance Tracker**: Visual donut gauges and monthly attendance percentage trends with subject-by-subject present/absent logs.
 - **Assignment Submissions**: Submission manager with status filters (Pending, Submitted, Graded) and direct attachment uploads.
 - **Examinations & Schedules**: Upcoming exam timetables, room assignments, reporting times, and previous exam records.
-- **Results & CGPA Analytics**: Semester-wise marks sheets, SGPA/CGPA calculations, and grade distributions.
+- **Results & CGPA Analytics**: Semester-wise mark sheets, SGPA/CGPA calculations, and grade distributions.
 - **Notice Board**: Instant announcements from the administration and faculty with category tags.
 
 ### 👨‍🏫 Faculty Portal
@@ -243,7 +243,7 @@ The frontend is fully prepared for an Express + MongoDB backend:
 - [ ] Complete Node.js + Express + MongoDB backend with JWT token generation and bcrypt password hashing.
 - [ ] Direct export of official student grade reports to PDF format.
 - [ ] Dark Mode toggle with persistent CSS theme variables.
-- [ ] Real-time web socket notifications for published assignments and examinations.
+- [ ] Real-time WebSocket notifications for published assignments and examinations.
 - [ ] SMS / Email integration for automated attendance warning alerts.
 
 ---
